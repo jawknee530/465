@@ -67,17 +67,21 @@ end
 
 #print out either _ or a character in a word
 def print_results(length)
-  puts "Current Results"
+  puts "Current Results\n"
   $won = true
+  gameboard = []
   for i in 0..length-1
     if $guesses.include?($target[i]) or $guesses.include?($uptarget[i]) then
-      puts $target[i]
+      gameboard[i] = $target[i]
+      #puts $target[i]
     else
-      puts "_"
+      gameboard[i] = "_"
+      #puts "_"
       $won = false
     end
   end
-  puts "Guesses left: #{$chances}"
+  puts gameboard.join(" ")
+  puts "\nGuesses left: #{$chances}\n\n"+"-"*20+"\n\n"
 end
 
 while !($ended) do
