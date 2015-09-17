@@ -13,6 +13,7 @@ $empty = false    #flips when we've removed too many words
 $target = "0"     #set to 0 until we choose a word
 $uptarget = "0"   #the uppercase version of the target for case insensitivity
 $won = false      #used for victory condition
+$guesses = []     #keep track of user guesses
 
 #get word length and set it to range
 puts "Enter word length between 5 and 20: "
@@ -24,8 +25,6 @@ if length > 20 then length = 20 end
 words = IO.read("words").split("\n")
 words.keep_if {|x| x.length == length}
 
-#used to keep track of user guesses
-$guesses = Array.new
 
 #keeps track of user guesses and decrements users chances
 def take_guess(letter)
@@ -36,6 +35,7 @@ def take_guess(letter)
     puts "Already guessed that letter, try again: "
     return false
   else
+    #make sure upper and lower case guesses are stored
     $guesses.push(letter)
     $guesses.push(letter.upcase)
     $guesses.push(letter.downcase)
@@ -46,7 +46,7 @@ def take_guess(letter)
     end
     if $chances == 0 then
       $ended = true #this will stop the loop
-      return false
+      return false #is this needed? wont just changing the ended flag stop everything?
     end
     return true
   end
@@ -104,8 +104,9 @@ while !($ended) do
   end
   print_results(length)
   if $won == true then
-    puts "CONGRATS YOU ARE A WINNER!"
+    puts "*"*30
+    puts "*"*2+"CONGRATS YOU ARE A WINNER!"+"*"*2
+    puts "*"*30+"\n\n"
     $ended = true
   end
-
 end
