@@ -12,7 +12,6 @@ $ended = false    #used for while loop to keep game running
 $empty = false    #flips when we've removed too many words
 $target = "0"     #set to 0 until we choose a word
 $uptarget = "0"   #the uppercase version of the target for case insensitivity
-$letters = []     #printing out the game lines
 $won = false      #used for victory condition
 
 #get word length and set it to range
@@ -20,11 +19,6 @@ puts "Enter word length between 5 and 20: "
 length = gets.to_i
 if length < 5 then length = 5 end
 if length > 20 then length = 20 end
-
-#set up letters array for printing _ when letter is uncovered
-for i in 0..length-1
-  $letters[i] = '_'
-end
 
 #read words in then split them into an array for removal
 words = IO.read("words").split("\n")
@@ -45,13 +39,13 @@ def take_guess(letter)
     $guesses.push(letter)
     $guesses.push(letter.upcase)
     $guesses.push(letter.downcase)
-    if $target == "0" then
+    if $target == "0" then #remove chances every turn til word is chosen
       $chances = $chances-1
-    elsif !$target.include?(letter) then
+    elsif !$target.include?(letter) then #only remove chance if letter not in word
       $chances = $chances-1
     end
     if $chances == 0 then
-      $ended = true
+      $ended = true #this will stop the loop
       return false
     end
     return true
@@ -80,10 +74,8 @@ def print_results(length)
   for i in 0..length-1
     if $guesses.include?($target[i]) or $guesses.include?($uptarget[i]) then
       gameboard[i] = $target[i]
-      #puts $target[i]
     else
       gameboard[i] = "_"
-      #puts "_"
       $won = false
     end
   end
@@ -91,6 +83,7 @@ def print_results(length)
   puts "\nGuesses left: #{$chances}\n\n"+"-"*30+"\n\n"
 end
 
+#main while loop to run the game turn by turn
 while !($ended) do
   puts "enter your guess: "
   guess = gets.chomp
@@ -105,7 +98,7 @@ while !($ended) do
         puts $uptarget
         $uptarget = $uptarget.split(//)
         $target = $target.split(//)
-        $chances = $chances+1
+        $chances = $chances+1 #adds 1 chance because function ordering
       end
     end
   end
