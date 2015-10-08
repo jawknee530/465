@@ -5,7 +5,7 @@ Fill in each step with a word that differs from the word in the previous step by
 </p>
 <br><br>
 <%=form_tag(query_path, method: "get")do %>
-  <%=hidden_field_tag 'start_word', @word1 %>
+  <%=hidden_field_tag :start_word, @word1 %>
   <%=@word1 %>
   <br>
   <%=label_tag(:word1,"Step 1: ")%>
@@ -23,7 +23,7 @@ Fill in each step with a word that differs from the word in the previous step by
   <%=label_tag(:word5,"Step 5: ")%>
   <%=text_field_tag(:word5)%>
   <br>
-  <%=hidden_field_tag 'end_word', @word2 %>
+  <%=hidden_field_tag :end_word, @word2 %>
   <%=@word2 %>
   <%=submit_tag("Check Answer")%>
   <br>

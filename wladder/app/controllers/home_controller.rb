@@ -19,7 +19,9 @@ def show
   @word4 = params[:word4]
   @word5 = params[:word5]
   @end = params[:end_word]
-  if legal [@start, @word1, @word2, @word3, @word4, @word5, @end] then
+  a = [@start, @word1, @word2, @word3, @word4, @word5, @end] 
+  a.keep_if {|v| !v.empty?}
+  if (legal a)
     @result = "Congrats you won"
   else
     @result = "Sorry you lose"
