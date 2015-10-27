@@ -11,7 +11,7 @@
 topics = Topic.create(
   [
     { title: 'Football', description: 'The best sport'},
-    { title: 'ThinkPads', description: 'THe best laptop'}
+    { title: 'ThinkPads', description: 'The best laptop'}
   ]
 )
 
