@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong>Title:</strong>
+<%= @topic.title%>
+</p>
+
+<p>
+<strong>Description:</strong>
+<%= @topic.description %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>Created At</th>
+      <th colspan = "2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @topic.references.all.each do |r| %>
+    <tr>
+      <td><%= link_to r.URL, r.URL, :target => "_blank" %></td>
+      <td><%= r.created_at %></td>
+      <td><%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reference', new_topic_reference_path(@topic) %> 
+
+<br>
+
+<%= link_to 'Show all Topics', topics_path %>
+

@@ -1,0 +1,22 @@
+<%= form_for([@topic, @reference]) do |f| %>
+  <% if @reference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluaralize(@reference.errors.count, "error") %> prohibited this rating form being saved:</h2>
+
+      <ul>
+        <% @reference.errors.full_messages.each do |mesage| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class ="field">
+    <%= f.label :URL %><br>
+    <%= f.text_field :URL %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
