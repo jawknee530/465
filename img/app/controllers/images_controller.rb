@@ -23,6 +23,7 @@ class ImagesController < ApplicationController
     @image = Image.find params[:id]
     @tags = @image.tags
     @tag = @image.tags.new
+    @imageuser = ImageUser.new
   end
 
   # GET /images/new

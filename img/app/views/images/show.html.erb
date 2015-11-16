@@ -28,16 +28,17 @@
     <h3>Add a Tag</h3>
     <%= render 'tags/form'%>
     <h3>Add A User to Image</h3>
-    <%= form_for(@image) do |f| %>
+    <%= form_for(@imageuser) do |f| %>
+      <div>
+        <%= f.hidden_field :image_id, :value => @image.id %>
       <div>
         <%= f.label :user_id %>
-        <%= select_tag(:user_id, options_for_select(@users)) %>
+        <%= f.select(:user_id, options_for_select(@users)) %>
       </div>
       <div class ="actions">
         <%= f.submit %>
       </div>
     <%end%><br>
-    <%= link_to 'Add a User', create_image_user_path(@image, @users) %>
     <%= link_to 'Edit', edit_image_path(@image) %> |
   <%end%>
 <%end%>

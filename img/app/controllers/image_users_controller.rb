@@ -30,7 +30,7 @@ class ImageUsersController < ApplicationController
 
     respond_to do |format|
       if @image_user.save
-        format.html { redirect_to @image_user, notice: 'Image user was successfully created.' }
+        format.html { redirect_to @image_user.image, notice: 'Image user was successfully created.' }
         format.json { render :show, status: :created, location: @image_user }
       else
         format.html { render :new }

@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.hidden_field :image_id %>
+    <%= f.hidden_field :image_id , :value => @image.id%>
   </div>
   <div class="field">
     <%= f.label :user_id %>
