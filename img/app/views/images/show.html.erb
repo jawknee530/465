@@ -16,9 +16,29 @@
 </p>
 
 <p>
-<img src="<%= @image.filename %>" alt="whatever" style="width:304px;height:304px;">
+<img src="<%= @image.filename %>" alt="whatever" style="width:400px;height:400px;">
 </p>
 
+<h2>Tags</h2>
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.str %></td><br>
+  </tr>
+  <%end%>
+
+<h3>Add A User to Image</h3>
+<%= form_for(@image) do |f| %>
+  <div>
+    <%= f.label :user_id %>
+    <%= select_tag(:user_id, options_for_select(@users)) %>
+  </div>
+  <div class ="actions">
+    <%= f.submit %>
+  </div>
+<%end%>
+
+
+<br>
 <% if @user then%>
   <%if @user.id == @image.user_id then%>
     <%= link_to 'Edit', edit_image_path(@image) %> |

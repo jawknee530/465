@@ -18,6 +18,10 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   def show
     @user = current_user
+    @users = User.all.map{|u| [u.name, u.id]}
+    @imageUsers = ImageUser.all
+    @image = Image.find params[:id]
+    @tags = @image.tags
   end
 
   # GET /images/new
@@ -27,21 +31,25 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+    @imageUsers = ImageUser.all
   end
 
   # POST /images
   # POST /images.json
   def create
     @image = Image.new(image_params)
+    generate_filename
+    @image.user = current_user
+    @uploaded_io = params[:image][:uploaded_file]
 
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+    File.open(Rails.root.join('public', 'images', @image.filename), 'wb') do |file|
+        file.write(@uploaded_io.read)
+    end
+
+    if @image.save
+      redirect_to @image, notice: 'Image was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -70,6 +78,9 @@ class ImagesController < ApplicationController
   end
 
   private
+    def generate_filename
+      @image.filename = ('a'..'z').to_a.shuffle[0,20].join
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_image
       @image = Image.find(params[:id])
