@@ -1,54 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Images</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Filename</th>
-      <th>Private</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <h1>Public Images</h1>
     <% @pubImages.each do |image| %>
-      <tr>
-        <td><%= image.filename %></td>
-        <td><%= image.private %></td>
-        <td><%= image.user_id %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-      </tr>
+      <%= link_to(image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image) %>
     <% end %>
-  </tbody>
-</table>
-    <h4>TEST</h4>
-<table>
-  <thead>
-    <tr>
-      <th>Filename</th>
-      <th>Private</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @priImages.each do |image| %>
-      <tr>
-        <td><%= image.filename %></td>
-        <td><%= image.private %></td>
-        <td><%= image.user_id %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  
+  <h1>Your Images<h1>
+      <%if @user then %>
+        <% @myImages.each do |mimage| %>
+            <%= link_to(image_tag(root_url + "/images/" + mimage.filename, size: "100x100", alt: mimage.filename),mimage) %>
+        <% end %>
+      <%end%>
 
-
+    
+<h1>Images Shared With You<h1>
 <br>
 
 <%= link_to 'New Image', new_image_path %>
