@@ -14,7 +14,14 @@
       <%end%>
 
     
-<h1>Images Shared With You<h1>
+      <h1>Images Shared With You<h1>
+          <%if @user then %>
+            <% @priImages.each do |pimage| %>
+            <%= link_to(image_tag(root_url + "/images/" + pimage.filename, size: "100x100", alt: pimage.filename),pimage) %>
+            <%end%>
+          <%end%>
+
+              
 <br>
 
 <%= link_to 'New Image', new_image_path %>

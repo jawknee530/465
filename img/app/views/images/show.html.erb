@@ -19,5 +19,9 @@
 <img src="<%= @image.filename %>" alt="whatever" style="width:304px;height:304px;">
 </p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
+<% if @user then%>
+  <%if @user.id == @image.user_id then%>
+    <%= link_to 'Edit', edit_image_path(@image) %> |
+  <%end%>
+<%end%>
 <%= link_to 'Back', images_path %>
