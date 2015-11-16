@@ -14,6 +14,7 @@ class ImageUsersController < ApplicationController
 
   # GET /image_users/new
   def new
+    @users = User.all.map{|u| [u.name, u.id]}
     @image_user = ImageUser.new
   end
 
@@ -24,6 +25,7 @@ class ImageUsersController < ApplicationController
   # POST /image_users
   # POST /image_users.json
   def create
+    @users = User.all.map{|u| [u.name, u.id]}
     @image_user = ImageUser.new(image_user_params)
 
     respond_to do |format|
