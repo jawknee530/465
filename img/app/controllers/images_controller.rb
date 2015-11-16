@@ -22,6 +22,7 @@ class ImagesController < ApplicationController
     @imageUsers = ImageUser.all
     @image = Image.find params[:id]
     @tags = @image.tags
+    @tag = @image.tags.new
   end
 
   # GET /images/new

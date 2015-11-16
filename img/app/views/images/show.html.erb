@@ -20,28 +20,34 @@
 </p>
 
 <h2>Tags</h2>
-<% @tags.each do |tag| %>
-  <tr>
-    <td><%= tag.str %></td><br>
-  </tr>
+<%if @user.id == @image.user_id then %>
+  <% @image.tags.each do |tag| %>
+    <tr>
+      <td><%= tag.str %></td>
+      <td><%= link_to 'Destroy', tag, method: :delete, data: {confirm: 'Are you sure?'}%></td><br>
+    </tr>
   <%end%>
-
-<h3>Add A User to Image</h3>
-<%= form_for(@image) do |f| %>
-  <div>
-    <%= f.label :user_id %>
-    <%= select_tag(:user_id, options_for_select(@users)) %>
-  </div>
-  <div class ="actions">
-    <%= f.submit %>
-  </div>
 <%end%>
+
 
 
 <br>
 <% if @user then%>
   <%if @user.id == @image.user_id then%>
+    <h3>Add a Tag</h3>
+    <%= render 'tags/form'%>
+    <h3>Add A User to Image</h3>
+    <%= form_for(@image) do |f| %>
+      <div>
+        <%= f.label :user_id %>
+        <%= select_tag(:user_id, options_for_select(@users)) %>
+      </div>
+      <div class ="actions">
+        <%= f.submit %>
+      </div>
+    <%end%><br>
     <%= link_to 'Edit', edit_image_path(@image) %> |
   <%end%>
 <%end%>
+
 <%= link_to 'Back', images_path %>
