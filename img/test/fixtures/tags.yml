@@ -2,10 +2,10 @@
 
 one:
   str: MyString
-  image_id: 
+  image_id: 1
   image_id: 
 
 two:
   str: MyString
-  image_id: 
+  image_id: 1
   image_id: 

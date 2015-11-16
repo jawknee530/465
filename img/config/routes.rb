@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :image_users
+  resources :images
   root "images#index"
   devise_for :users
   resources :images do
