@@ -21,10 +21,20 @@
 <%end%>
 
 <h2>Image Users</h2>
-<% @curUsers.each do |f| %>
-  <tr>
-    <td><%= f.name %></td><br>
-  </tr>
+<%if @user.id == @image.user_id then %>
+  <% @curUsers.each do |f| %>
+    <tr>
+      <td><%= f.name %></td>
+      <% user = @imageUsers.find(f.id) %>
+      <td><%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'}%></td><br>
+    </tr>
+  <%end%>
+<%else%>
+  <% @curUsers.each do |f| %>
+    <tr>
+      <td><%= f.name %></td><br>
+    </tr>
+  <%end%>
 <%end%>
 
 
