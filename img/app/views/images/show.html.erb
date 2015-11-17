@@ -58,6 +58,7 @@
       </div>
     <%end%><br>
     <%= link_to 'Edit', edit_image_path(@image) %> |
+    <%= link_to 'Destroy', @image, method: :delete, data: {confirm: 'Are you sure?'}%> |
   <%end%>
 <%end%>
 
