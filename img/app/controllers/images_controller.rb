@@ -22,7 +22,9 @@ class ImagesController < ApplicationController
     ImageUser.all.each{|x| if x.image_id == @image.id then 
                       User.all.each {|y| if x.user_id == y.id then
                      @curUsers.add(y) end} end}
-    @users = User.all.map{|u| [u.name, u.id]}
+    @users = Set.new
+    User.all.each{|u| if @curUsers.include?(u) then else @users.add(u) end}
+    @users.map!{|u| [u.name, u.id]}
     @imageUsers = ImageUser.all
     @image = Image.find params[:id]
     @tags = @image.tags
