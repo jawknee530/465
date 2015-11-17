@@ -22,6 +22,18 @@
   <%end%>
 <%end%>
 
+<h2>Change Private/Public</h2>
+<%= form_for(@image) do |f| %>
+  <div class = "field">
+    <%= f.check_box(:private) %>If Checked Image Is Private
+    <%= f.hidden_field :id, :value => @image.id %>
+    <%= f.hidden_field :user_id, :value => @image.user_id %>
+    <%= f.hidden_field :filename, :value => @image.filename %>
+    <div class ="actions">
+      <%= f.submit%>
+  </div>
+  <%end%>
+
 <h2>Image Users</h2>
 <%if @user && @user.id == @image.user_id then %>
   <% @curUsers.each do |f| %>
@@ -59,7 +71,6 @@
         <%= f.submit %>
       </div>
     <%end%><br>
-    <%= link_to 'Edit', edit_image_path(@image) %> |
     <%= link_to 'Destroy', @image, method: :delete, data: {confirm: 'Are you sure?'}%> |
   <%end%>
 <%end%>
