@@ -7,10 +7,12 @@
 <h2>Tags</h2>
 <%if @user && @user.id == @image.user_id then %>
   <% @image.tags.each do |tag| %>
-    <tr>
-      <td><%= tag.str %></td>
-      <td><%= link_to 'Destroy', tag, method: :delete, data: {confirm: 'Are you sure?'}%></td><br>
-    </tr>
+    <% if !tag.new_record? then %>
+      <tr>
+        <td><%= tag.str %></td>
+        <td><%= link_to 'Destroy', tag, method: :delete, data: {confirm: 'Are you sure?'}%></td><br>
+      </tr>
+    <%end%>
   <%end%>
 <%else%>
   <% @image.tags.each do |tag| %>
@@ -25,8 +27,8 @@
   <% @curUsers.each do |f| %>
     <tr>
       <td><%= f.name %></td>
-      <% user = @imageUsers.find(f.id) %>
-      <td><%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'}%></td><br>
+      <% @imageUsers.each{|i| if i.image_id == @image.id && i.user_id == f.id then @use = i end}%>
+      <td><%= link_to 'Destroy', @use, method: :delete, data: {confirm: 'Are you sure?'}%></td><br>
     </tr>
   <%end%>
 <%else%>

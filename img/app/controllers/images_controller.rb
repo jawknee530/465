@@ -17,6 +17,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @use
     @user = current_user
     @curUsers = Set.new
     ImageUser.all.each{|x| if x.image_id == @image.id then 
@@ -25,6 +26,7 @@ class ImagesController < ApplicationController
     @users = Set.new
     User.all.each{|u| if @curUsers.include?(u) then else @users.add(u) end}
     @users.map!{|u| [u.name, u.id]}
+
     @imageUsers = ImageUser.all
     @image = Image.find params[:id]
     @tags = @image.tags
