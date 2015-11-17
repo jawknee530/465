@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'New Image', new_image_path %>
+<%if @user then%>
+  <%= link_to 'New Image', new_image_path %>
+<%end%>
 <br><br>
 
   <h1>Public Images</h1>
