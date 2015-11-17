@@ -5,8 +5,14 @@
 <br><br>
 
   <h1>Public Images</h1>
-    <% @pubImages.each do |image| %>
-      <%= link_to(image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image) %>
+  <% @pubImages.each do |image| %>
+      <% if !@user then %>
+        <%= link_to(image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image) %>
+      <%else%>
+        <%if @user.id != image.user_id then%>
+        <%= link_to(image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image) %>
+        <%end%>
+      <%end%>
     <% end %>
 
   
