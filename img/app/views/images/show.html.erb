@@ -5,7 +5,7 @@
 </p>
 
 <h2>Tags</h2>
-<%if @user.id == @image.user_id then %>
+<%if @user && @user.id == @image.user_id then %>
   <% @image.tags.each do |tag| %>
     <tr>
       <td><%= tag.str %></td>
@@ -21,7 +21,7 @@
 <%end%>
 
 <h2>Image Users</h2>
-<%if @user.id == @image.user_id then %>
+<%if @user && @user.id == @image.user_id then %>
   <% @curUsers.each do |f| %>
     <tr>
       <td><%= f.name %></td>
