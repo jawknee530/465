@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reject.user_id %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @reject.profile_id %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @reject.profile %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reject.user %>
+</p>
+
+<%= link_to 'Edit', edit_reject_path(@reject) %> |
+<%= link_to 'Back', rejects_path %>

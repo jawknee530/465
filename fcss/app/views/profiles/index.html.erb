@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Everyone Whos Signed Up</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <%@profiles.each do |profile| %>
+          <% if profile.user_id == user.id then %>
+            <td><%= link_to 'Show', profile%></td>
+          <%end%>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Profile', new_profile_path %>
