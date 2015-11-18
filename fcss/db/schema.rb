@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20151118193053) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "my_id"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
