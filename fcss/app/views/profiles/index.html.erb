@@ -52,6 +52,7 @@ next few days.
 </table>
 
 <br>
-
-<%= link_to 'New Profile', new_profile_path %>
+<% if !@created then %>
+  <%= link_to 'New Profile', new_profile_path %>
+<%end%>
 </body>

@@ -4,8 +4,15 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
+    @created = false
+    @user = current_user
     @users = User.all
     @profiles = Profile.all
+    @profiles.each do |p|
+      if @user.id == p.my_id then
+        @created = true
+      end
+    end
   end
 
   # GET /profiles/1
