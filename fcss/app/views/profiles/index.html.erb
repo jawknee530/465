@@ -22,7 +22,9 @@ be real).
   <thead>
     <tr>
       <th>Name</th>
-      <th>Descrittion</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>Exclude?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,6 +36,8 @@ be real).
         <%@profiles.each do |profile| %>
           <% if profile.my_id == user.id then %>
             <td><%= profile.description %></td>
+            <td><%= profile.address %></td>
+            <td><%= profile.exclude%></td>
             <td><%= link_to 'Show', profile%></td>
           <%end%>
         <%end%>

@@ -2,24 +2,28 @@
 
 <h2>Only you can edit/destroy your own</h2>
 <h2>profile or see your target.</h2>
-<p>
-  <strong>My ID:</strong>
-  <%= @profile.my_id%>
-</p>
 
 <p>
-  <strong>My Name:</strong>
+  <strong>Name:</strong>
   <%= current_user.name%>
 </p>
 
 <p>
-<strong>My Target:</strong>
+<strong>Target:</strong>
 <%if current_user.id == @profile.my_id then %>
   <%= @profile.user_id %>
 <%end%>
 <p>
   <strong>Description:</strong>
   <%= @profile.description %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @profile.address%>
+</p>
+<p>
+  <strong>X-mas day location:</strong>
+  <%= @profile.location%>
 </p>
 
 <%= link_to 'Back', profiles_path %> |

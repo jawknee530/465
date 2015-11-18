@@ -17,6 +17,9 @@ ActiveRecord::Schema.define(version: 20151118193053) do
     t.integer  "user_id"
     t.integer  "my_id"
     t.string   "description"
+    t.string   "address"
+    t.string   "location"
+    t.string   "exclude"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
