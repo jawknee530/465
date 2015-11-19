@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
     @users = User.all
     @profiles = Profile.all
     @profiles.each do |p|
-      if @user.id == p.my_id then
+      if @user && @user.id == p.my_id then
         @created = true
       end
     end
