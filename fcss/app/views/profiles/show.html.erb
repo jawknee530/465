@@ -10,7 +10,7 @@
 
 <p>
 <strong>Target:</strong>
-<%if current_user.id == @profile.my_id then %>
+<%if current_user && current_user.id == @profile.my_id then %>
   <%= @profile.user_id %>
 <%end%>
 <p>
