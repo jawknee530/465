@@ -27,7 +27,7 @@
 </p>
 
 <%= link_to 'Back', profiles_path %> |
-<% if current_user.id == @profile.my_id then %>
+<% if current_user && current_user.id == @profile.my_id then %>
   <%= link_to 'Edit', edit_profile_path(@profile) %> |
   <%= link_to 'Destroy', @profile, method: :delete, data:{confirm: 'Are you sure?'}%>
 <%end%>
