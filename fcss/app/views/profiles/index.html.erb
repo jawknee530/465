@@ -3,24 +3,30 @@
 <h1>FRIEND CLUB SECRET SANTA</h1>
 <body>
 <pre><span class="inner-pre" style="font-size: 12px">
+  If you do not appear in the table below select "Sign Up"
+above and create a new user account.
   After you have signed up for an account your name will be
-listed below. Click the link at the bottom to create a new
+listed below. Click the link at the bottom to edit your
 profile which will allow you to add a description to 
-your self. Once the profile has been created you will be
-able to view it by clicking a link to the right of your name.
-In this profile view you will be able to see who you have
-been assigned. Others can view your profile but will not be
-able to see who you were assigned unless they are logged in
-with your user account. 
-  Vote For wether you want users to be able to choose others
-to not be matched with.
+your self as well as add your address etc. Once the profile 
+has been set up you will be able to view it by clicking a link
+to the right of your name.
+  In this profile view you will be able to see who you have
+been assigned once the sign up deadline is reached. Other
+users can view your profile but will not be able to see who 
+you were assigned unless they are logged in with your user
+account. 
+  Vote/argue for wether you want users to be able to choose others
+to not be matched with in the "Exclude" field of your profile.
+(I think that signifigant others should be excluded but whatever.)
   Sign ups will be open until the day before thanksgiving at
 which point everyone will be assigned a match and it will
 show up on your profile page.
   Users profile pages will also show where the user will be
-on xmas day. I will add the ability for users to specify 
-exactly where their secret santa should send their gift in the 
-next few days.
+on xmas day so you can check your targets profile to figure out
+what to do with/where to send their "gift". It may be a good 
+idea to put in an address where you know your present will be 
+recoverable and not where you are currently living (Dan).
 </span></pre>
 
 <table border="1" cellpadding="7">
@@ -52,7 +58,7 @@ next few days.
 </table>
 
 <br>
-<% if !@created then %>
-  <%= link_to 'New Profile', new_profile_path %>
+<% if !@created && @user then %>
+  <%= link_to 'Edit Your Profile', new_profile_path %>
 <%end%>
 </body>
