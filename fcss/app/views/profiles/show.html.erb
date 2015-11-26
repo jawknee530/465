@@ -14,8 +14,8 @@ viewable by you and only if you are logged in.
 
 <p>
 <strong>Target:</strong>
-<%if current_user && current_user.id == @profile.my_id then %>
-  <%= @profile.user_id %>
+<%if current_user && current_user.id == @profile.my_id && @target then %>
+  <%= @target.name %>
 <%end%>
 <p>
   <strong>Description:</strong>

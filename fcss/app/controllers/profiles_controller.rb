@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
+  
   # GET /profiles
   # GET /profiles.json
   def index
@@ -19,6 +20,10 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @use = User.find(@profile.my_id)
+    @target = User.find(@profile.user_id)
+    if @use.id == 1 && @use.id == @profile.my_id && !@profile.user_id then
+      do_it
+    end
   end
 
   # GET /profiles/new
@@ -82,4 +87,42 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(:target, :description, :address, :location, :exclude)
     end
+
+    def do_it
+      done = false
+      @profiles = Profile.all
+      @users = User.all
+      while done == false do
+        done = true
+        @targets = User.all.order('random()')
+        @users.each_index do |i|
+          if @targets[i].id == @users[i].id then
+            done = false
+          end
+        end
+        puts '-'*20
+        @users.each_index do |i|
+          a = @users[i].id
+          b = @targets[i].id
+          puts '*'*20
+          puts a
+          puts b
+          puts '*'*20
+          @profiles.each do |x|
+            if x.my_id == a then
+              x.update(user_id: b)
+            end
+          end
+        end
+        puts '-'*20
+      end
+    end
 end
+
+
+
+
+
+
+
+
