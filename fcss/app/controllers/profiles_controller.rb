@@ -20,8 +20,10 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @use = User.find(@profile.my_id)
-    @target = User.find(@profile.user_id)
-    if @use.id == 1 && @use.id == @profile.my_id && !@profile.user_id then
+    if @profile.user_id then
+      @target = User.find(@profile.user_id)
+    end
+    if ((@use.id == 1) && (@use.id == @profile.my_id) && (!@profile.user_id)) then
       do_it
     end
   end
