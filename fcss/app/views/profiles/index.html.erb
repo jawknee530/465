@@ -35,7 +35,6 @@ recoverable and not where you are currently living (Dan).
       <th>Name</th>
       <th>Description</th>
       <th>Address</th>
-      <th>Exclude?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -48,7 +47,6 @@ recoverable and not where you are currently living (Dan).
           <% if profile.my_id == user.id then %>
             <td><%= profile.description %></td>
             <td><%= profile.address %></td>
-            <td><%= profile.exclude%></td>
             <td><%= link_to 'View Profile', profile%></td>
           <%end%>
         <%end%>
