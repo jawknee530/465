@@ -1,0 +1,11 @@
+.bgimage {
+  background-image: url(/images/bus.jpg);
+  background-position: center center;
+  background-size: cover;
+  height: 200px;
+}
+
+.title {
+  color: #cc0000;
+  text-shadow: 2px 2px #006600;
+}

@@ -1,6 +1,19 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <%= stylesheet_link_tag "styles.css" %>
+
+</head>
 <p id="notice"><%= notice %></p>
 
-<h1>FRIEND CLUB SECRET SANTA</h1>
+<header class="bgimage">
+  <div class="container title">
+    <h1>FRIEND CLUB SECRET SANTA</h1>
+  </div>
+</header>
 <body>
 <pre><span class="inner-pre" style="font-size: 12px">
   If you do not appear in the table below select "Sign Up"
@@ -59,4 +72,8 @@ recoverable and not where you are currently living (Dan).
 <% if !@created && @user then %>
   <%= link_to 'Edit Your Profile', new_profile_path %>
 <%end%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
+
+
