@@ -15,65 +15,60 @@
   </div>
 </header>
 <body>
-<pre><span class="inner-pre" style="font-size: 12px">
-  If you do not appear in the table below select "Sign Up"
-above and create a new user account.
-  After you have signed up for an account your name will be
-listed below. Click the link at the bottom to edit your
-profile which will allow you to add a description to 
-your self as well as add your address etc. Once the profile 
-has been set up you will be able to view it by clicking a link
-to the right of your name.
-  In this profile view you will be able to see who you have
-been assigned once the sign up deadline is reached. Other
-users can view your profile but will not be able to see who 
-you were assigned unless they are logged in with your user
-account. 
-  Vote/argue for wether you want users to be able to choose others
-to not be matched with in the "Exclude" field of your profile.
-(I think that signifigant others should be excluded but whatever.)
-  Sign ups will be open until the day before thanksgiving at
-which point everyone will be assigned a match and it will
-show up on your profile page.
-  Users profile pages will also show where the user will be
-on xmas day so you can check your targets profile to figure out
-what to do with/where to send their "gift". It may be a good 
-idea to put in an address where you know your present will be 
-recoverable and not where you are currently living (Dan).
-</span></pre>
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+  <p>Check your profile to be able to see who you have
+  been assigned as your secret santa target. Other
+  users can view your profile but will not be able to 
+  see who you were assigned unless they are logged in 
+  with your user account. This means that you have to
+  be logged in to your account to see your target.</p>
+  <p>Also check your targets profile to see where he
+  or she will be on thanksgiving and what address to
+  send any gifts on etc.</p>
+</div>
+</div>
+</div>
 
-<table border="1" cellpadding="7">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+  <table border="1" cellpadding="7">
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <%@profiles.each do |profile| %>
-          <% if profile.my_id == user.id then %>
-            <td><%= profile.description %></td>
-            <td><%= profile.address %></td>
-            <td><%= link_to 'View Profile', profile%></td>
-          <%end%>
-        <%end%>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<% if !@created && @user then %>
-  <%= link_to 'Edit Your Profile', new_profile_path %>
-<%end%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <%@profiles.each do |profile| %>
+            <% if profile.my_id == user.id then %>
+              <td><%= profile.description %></td>
+              <td><%= profile.address %></td>
+              <td><%= link_to 'View Profile', profile%></td>
+            <%end%>
+          <%end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+
+  <br>
+  <% if !@created && @user then %>
+    <%= link_to 'Edit Your Profile', new_profile_path %>
+  <%end%>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 
 
