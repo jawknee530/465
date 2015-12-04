@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Only you can edit/destroy your own</h2>
+<h2>profile or see your target.</h2>
+
+<p>
+  <strong>Name:</strong>
+  <%= current_user.name %>
+</p>
+
+<p>
+<strong>Target:</strong>
+<%if current_user.id == @profile.my_id then %>
+  <%= @profile.user_id %>
+<%end%>
+<p>
+  <strong>Description:</strong>
+  <%= @profile.description %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @profile.address%>
+</p>
+<p>
+  <strong>X-mas day location:</strong>
+  <%= @profile.location%>
+</p>
+
+<%= link_to 'Back', profiles_path %> |
+<% if current_user.id == @profile.my_id then %>
+  <%= link_to 'Edit', edit_profile_path(@profile) %> |
+  <%= link_to 'Destroy', @profile, method: :delete, data:{confirm: 'Are you sure?'}%>
+<%end%>

@@ -1,5 +1,5 @@
 .bgimage {
-  background-image: url(/images/bus.jpg);
+  background-image: asset-data-url('bus.jpg');
   background-position: center center;
   background-size: cover;
   height: 200px;
