@@ -34,15 +34,12 @@
             </ul>      
             <ul class="nav navbar-nav navbar-right">
 
-<div id="user_nav">
   <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <li class="active"><a href="<%= destroy_user_session_path %>"><span class="glyphicon glyphicon-log-out"> Log Out: <%= current_user.email %></span></a></li>
   <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "Sign in", new_user_session_path %>
+    <li class="active"><a href="<%= new_user_registration_path %>"><span class="glyphicon glyphicon-user"> Sign Up</span></a></li>
+    <li class="active"><a href="<%= new_user_session_path %>"><span class="glyphicon glyphicon-log-in"> Sign In</span></a></li>
   <% end %>
-</div>
             </ul>
           </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
