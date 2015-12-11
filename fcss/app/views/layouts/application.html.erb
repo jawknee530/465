@@ -24,7 +24,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/fcss">FCSS</a>
+        <a class="navbar-brand" href="<%=root_path%>">FCSS</a>
       </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,7 +35,7 @@
             <ul class="nav navbar-nav navbar-right">
 
   <% if user_signed_in? %>
-  <li class="active"><a href="<%= destroy_user_session_path %>"><span class="glyphicon glyphicon-log-out"> Log Out: <%= current_user.email %></span></a></li>
+    <li class="active"><a href="<%= destroy_user_session_path %>"><span class="glyphicon glyphicon-log-out"> Log-Out: <%= current_user.name%></span></a></li>
   <% else %>
     <li class="active"><a href="<%= new_user_registration_path %>"><span class="glyphicon glyphicon-user"> Sign Up</span></a></li>
     <li class="active"><a href="<%= new_user_session_path %>"><span class="glyphicon glyphicon-log-in"> Sign In</span></a></li>
